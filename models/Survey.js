@@ -1,6 +1,6 @@
 var Sequelize = require("sequelize");
 
-var UUIDV1 = require("uuid/v1"); 
+var UUIDV1 = require("uuidv1"); 
 
 module.exports = function(sequelize, DataTypes){
     var Survey = sequelize.define("Survey", {
