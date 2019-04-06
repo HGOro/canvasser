@@ -2,7 +2,7 @@ var path = require("path");
 var router = require("express").Router();
 
 var apiRoutes = require("./api");
-var htmlRoutes = require("./html");
+var htmlRoutes = require("./html/html.js");
 
 //api routes
 router.use("/api", apiRoutes);
@@ -11,5 +11,10 @@ router.use("/api", apiRoutes);
 router.use("/", htmlRoutes);
 
 // create catch all
+router.use( function(req, res){
+   res.render("index")
+}
+ 
+);
 
-module.export = router;
+module.exports = router;
