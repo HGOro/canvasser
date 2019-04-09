@@ -2,14 +2,14 @@
 Hello World
 
 <br/>
-{{uuid}}
+{{userID}}
 <br/>
 {{firstName}} {{lastName}}
 
 <div class= "container">
     <div class="form-group">
       <label for="exampleFormControlSelect1">Party Affiliation</label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select class="form-control" id="partyAff">
         <option>Democrat</option>
         <option>Republican</option>
         <option>Independent</option>
@@ -20,7 +20,7 @@ Hello World
     
     <div class="form-group">
       <label for="exampleFormControlSelect2">Democratic Nominee</label>
-      <select class="form-control" id="exampleFormControlSelect2">
+      <select class="form-control" id="demChoice">
         <option>Bernie Sanders</option>
         <option>Kamala Harris</option>
         <option>Other</option>
@@ -31,7 +31,7 @@ Hello World
 
     <div class="form-group">
       <label for="exampleFormControlSelect3">Proposition 1</label>
-      <select class="form-control" id="exampleFormControlSelect3">
+      <select class="form-control" id="propChoice">
         <option>Yes</option>
         <option>No</option>
         <option>Undecided</option>
@@ -41,12 +41,45 @@ Hello World
     
     <div class="form-group">
       <label for="exampleFormControlTextarea4">Notes</label>
-      <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+      <textarea class="form-control" id="notes" rows="3"></textarea>
     </div>
+
+    <button class="btn btn-primary" id="survey">Submit Survey</button>
+
 
 </div>
 
-{{!-- put jquery to collect form data here --}}
 <script>
+
+$("#submit").click(function(event){
+    event.preventDefault();
+    populateSurveyData();
+});
+
+function populateSurveyData() {
+  var surveyData = {}
+  $("option").each(function) {
+    
+    var elementVal = $(this).val();
+    var elementID = $(this).attr("id");
+    
+    if(elementVal.length > 0){
+      surveyData[elementID] = elementVal;
+      $(this).val("");
+    }
+
+    createNewSurvey(surveyData);
+    console.log(surveyData);
+
+  }
+
+}
+
+function createNewSurvey(surveyData){
   
+  $.post("/api/survey", surveyData, function(results){
+    console.log(results);
+    });
+}
+
 </script>
