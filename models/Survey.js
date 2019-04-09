@@ -10,12 +10,52 @@ var UUIDV1 = require("uuidv1");
 
 module.exports = function(sequelize, DataTypes){
     var Survey = sequelize.define("Survey", {
-        uuid: {
+        
+        userID:{
             primaryKey: true,
+            type: Sequelize.INTEGER,
+            autoIncrement: true   
+        },
+        
+        uuid: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV1,
             isUnique: true
         },
+
+        firstName:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                is: ["^[a-z]+$",'i'],
+                min: 1
+            }
+        },
+        
+        lastName:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                is: ["^[a-z]+$",'i'],
+                min: 1
+            }
+        },
+
+        party:{
+            type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4", "value 5" ),
+            allowNull: false
+        },
+
+        prop:{
+            type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4"),
+            allowNull: false
+        },
+
+        notes:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+
 
         createdAt: Sequelize.DATE, 
         updatedAt: Sequelize.DATE
