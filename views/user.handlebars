@@ -1,85 +1,125 @@
 {{!-- this is the user form --}}
 
-<div class = "container">
-    <form id="userForm">
-        <div class="form-row">
-            <div class="col">
-              <input id="firstName" type="text" class="form-control" placeholder="First name" required>
+ <div class="jumbotron">
+        <div class="row">
+            <div class="col-3 bg-primary">
+                <h1 class="display-4" id="stars">Welcome To Canvasser!</h1>
             </div>
-            <div class="col">
-              <input id="lastName" type="text" class="form-control" placeholder="Last name" required>
+            <div class="col-9" id="stripes">
+                <div class="col-12 bg-danger" id="redStripe"></div>
+                <div class="col-12 bg-light" id="whiteStripe"></div>
+                <div class="col-12 bg-danger" id="redStripe"></div>
+                <div class="col-12 bg-light" id="whiteStripe"></div>
+                <div class="col-12 bg-danger" id="redStripe"></div>
+                <div class="col-12 bg-light" id="whiteStripe"></div>
+                <div class="col-12 bg-danger" id="redStripe"></div>
             </div>
         </div>
-
-        <div class="form-group">
-            <label for="inputAge">Age <span>(optional)</span></label>
-            <input type="number" class="form-control" id="age">
-        </div>
-
-        <div class="form-group">
-            <label for="inputAge">Gender <span>(optional)</span></label>
-            <input type="input" class="form-control" id="gender">
-        </div>
-
-        <div class="form-group">
-            <label for="inputLang">Language Preference <span>(optional)</span></label>
-            <input type="text" class="form-control" id="language">
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
-        </div>
-
-        <div class="form-group">
-          <label for="phoneNumber">Phone Number <span>(optional)</span></label>
-          <input type="tel" id="phoneNumber" class="form-control" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="555-555-5555">
-        </div>
-
-        <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-        </div>
-
-        <div class="form-group">
-            <label for="address2">Address 2 <span>(optional)</span></label>
-            <input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor">
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="city">City</label>
-                <input type="text" class="form-control" id="city" required>
-            </div>
-            
-            <div class="form-group col-md-4">
-                <label for="state">State</label>
-                <input type="text" class="form-control" id="state" required>
-            </div>
-
-            <div class="form-group col-md-2">
-                <label for="zip">Zip</label>
-                <input type="number" class="form-control" id="zip" required>
-             </div>
-
-        </div>
-
-        <button id="submit" class="btn-primary btn">Submit</button>
-
-    </form>
-    <div id="confirmation" class="hide">
-        <h1>Thank you for signing up!</h1>
-        <p>Keep a lookout for updates in your email.</p>
-        <p id="confirmName"></p>
-        <p id="confirmEmail"></p>
-        <p id="confirmNumber"></p>
-        <p id="confirmAddress"></p>
-        <p id="confirmGender"></p>
-        <p id="confirmAge"></p>
-
-        <button class="btn btn-primary" id="survey">Take Survey</button>
+        <p class="lead col-12 bg-light" id="whiteStripe">Fill out a user profile here, then sumbit and fill out their survey!</p>
+        <div class="col-12 bg-danger" id="redStripe"></div>
+        <div class="col-12 bg-light" id="whiteStripe"></div>
+        <div class="col-12 bg-danger" id="redStripe"></div>
+        <p class="col-12 bg-light" id="whiteStripe">You can graph responses by different demographics once you have enough data.</p>
+        <div class="col-12 bg-danger" id="redStripe"></div>
     </div>
-</div>
+
+
+    <div class="container">
+        <form id="userForm">
+            <div class="form-row">
+                <div class="col">
+                    <input id="firstName" type="text" class="form-control" placeholder="First name" required>
+                </div>
+                <div class="col">
+                    <input id="lastName" type="text" class="form-control" placeholder="Last name" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-4">
+                    <label for="inputAge">Age</label>
+                    <input type="number" class="form-control" id="age">
+                </div>
+
+                <div class="form-group col-4">
+                    <label for="inputGend">Gender</label>
+                    <div class="row">
+                        <select id="gender">
+                            <option> Male </option>
+                            <option> Female </option>
+                            <option> Non-binary </option>
+                            <option> Prefer not to say </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-4">
+                    <label for="inputLang">Language Preference </label>
+                    <div class="row">
+                        <select id="language">
+                            <option value="english">English</option>
+                            <option value="mandarin">Mandarin</option>
+                            <option value="spanish">Spanish</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="tel" id="phoneNumber" class="form-control" name="phone"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="555-555-5555">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address2">Address 2 <span>(optional)</span></label>
+                <input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="state">State</label>
+                    <input type="text" class="form-control" id="state" required>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label for="zip">Zip</label>
+                    <input type="number" class="form-control" id="zip" required>
+                </div>
+
+            </div>
+
+            <button id="submit" class="btn-primary btn">Submit</button>
+
+        </form>
+        <div id="confirmation" class="hide justify-content-center">
+            <h2>Thank you for signing up!</h1>
+            <p>Keep a lookout for updates in your email.</p>
+            <p id="confirmName"></p>
+            <p id="confirmEmail"></p>
+            <p id="confirmNumber"></p>
+            <p id="confirmAddress"></p>
+            <p id="confirmGender"></p>
+            <p id="confirmAge"></p>
+
+            <button class="btn btn-primary" id="survey">Fill out the Survey</button>
+        </div>
+    </div>
 
 
 {{!-- put jquery to collect form data here --}}
