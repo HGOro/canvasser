@@ -16,12 +16,6 @@ module.exports = function(sequelize, DataTypes){
             type: Sequelize.INTEGER,
             autoIncrement: true   
         },
-        
-        uuid: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV1,
-            isUnique: true
-        },
 
         firstName:{
             type: DataTypes.STRING,
