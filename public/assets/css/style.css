@@ -21,6 +21,7 @@
 
 #stars {
     color: white;
+     font-size: 4vw; 
 }
 
 p {
@@ -41,3 +42,23 @@ p {
     color: red;
 }
 /* ------------------------------------------ */
+
+/* Homepage css */
+
+h4 {
+    text-align: center;
+}
+
+#MG {
+    padding: 1%;
+}
+
+@media (max-width: 576px) {
+
+.smallFont{
+    font-size: 50%;  
+    
+}
+}
+
+/* ----------------------------------------------- */
