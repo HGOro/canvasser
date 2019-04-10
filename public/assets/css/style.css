@@ -2,3 +2,42 @@
     display: none;
     
 }
+
+
+/*css for Flag display on user.handlebar*/
+.jumbotron {
+    padding: 0px 0px 1px 0px;
+}
+
+#stripes {
+    padding: 0;
+}
+#redStripe {
+    height: 25px;
+}
+#whiteStripe {
+    height: 25px;
+}
+
+#stars {
+    color: white;
+}
+
+p {
+    margin: 0;
+}
+/*------------------------------------------*/
+
+/* css for survey.handlebars */
+#scales {
+    padding: 1%;
+}
+
+.donk {
+    color: blue;
+}
+
+.eleph {
+    color: red;
+}
+/* ------------------------------------------ */
