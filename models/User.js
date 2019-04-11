@@ -47,11 +47,12 @@ module.exports = function(sequelize, DataTypes){
             validate: {
                 min: 2
             }
-        },
+        }, 
 
         gender:{
             type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4"),
-            allowNull: false
+            //type: DataTypes.STRING,
+            //allowNull: false
         },
 
         languagePref:{
@@ -94,7 +95,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                is: ["^[a-z]+$",'i'],
+                //is: ["^[a-z]+$",'i'],
                 min: 2
             }
         },

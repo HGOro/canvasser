@@ -10,7 +10,7 @@ Survey Form
   <form id="surveyForm">
     <div class="form-group">
       <label for="partyAff">Party Affiliation</label>
-      <select value="" class="form-control" id="partyAff" required>
+      <select value="" class="form-control" id="party" required>
         <option values="democrat">Democrat</option>
         <option values="republican">Republican</option>
         <option values="independent">Independent</option>
@@ -32,7 +32,7 @@ Survey Form
 
     <div class="form-group">
       <label for="propChoice">Proposition 1</label required>
-      <select value="" class="form-control" id="propChoice">
+      <select value="" class="form-control" id="prop">
         <option values="yes">Yes</option>
         <option values="no">No</option>
         <option values="undecided">Undecided</option>
@@ -55,7 +55,7 @@ Survey Form
 
 $("#submit-survey").click(function(event){
     event.preventDefault();
-    populateSurveyData();
+    //populateSurveyData();
 
     var formIsValid = $("#surveyForm")[0].checkValidity()
 
@@ -87,10 +87,6 @@ function populateSurveyData() {
       $(this).val("");
     }
   });
-
-  if($("#indNominee").val().trim().length > 0){
-    surveyData.indNominee = $("#indNominee").val().trim();
-  }
 
   if($("#notes").val().trim().length > 0){
     surveyData.notes = $("#notes").val().trim();

@@ -20,8 +20,7 @@ module.exports = {
         .create(req.body)        
         .then(function(dbSurvey){
             res.json(dbSurvey)
-        })
-    
+        })    
     },
     delete: function(req, res){
         console.log(req.body)
