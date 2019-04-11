@@ -5,7 +5,6 @@
 <canvas id="myChart" width="100" height="50"></canvas>
 <canvas id="myChart2" width="100" height="50"></canvas>
 <canvas id="myChart3" width="100" height="50"></canvas>
-<canvas id="myChart4" width="100" height="50"></canvas>
 
 <script>
     //party graph=============================== 
@@ -212,76 +211,5 @@
             }
         });
     }
-//4th graph, for now copied the nominee graph as a placeholder ===================================
-    $.get("/api/survey/all", function(response){
-        var bernieSanders = 0;
-        var kamalaHarris = 0;
-        var other = 0;
-        var undecided = 0;
-        var abstain = 0;
-        var nomineeCount = [];
-        response.forEach(function(user, index){
-            console.log(user)
-            console.log(user.demNominee)
-            if(user.demNominee === "Bernie Sanders"){
-                bernieSanders++
-            }
-            if(user.demNominee === "Kamala Harris"){
-                kamalaHarris++
-            }
-            if(user.demNominee === "Other"){
-            other++
-            }
-            if(user.demNominee === "Undecided"){
-            undecided++
-            }
-            if(user.demNominee === "Abstain"){
-            abstain++
-            }
-        })
-        nomineeCount.push(bernieSanders, kamalaHarris, other, undecided, abstain)
-        createPlaceHolderGraph(nomineeCount)
-    })
-
-    function createPlaceHolderGraph(nomineeCount){
-        var ctx = document.getElementById('myChart4');
-        var myChart = new Chart(ctx, {
-            type: 'polarArea',
-            data: {
-                labels: ['Bernie Sanders','Kamala Harris','Other','Undecided','Abstain'],
-                datasets: [{
-                    data: nomineeCount,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    }
-
-
 
 </script>
