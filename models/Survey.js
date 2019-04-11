@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes){
         //},
         
         party:{
-            type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4", "value 5"),
+            type: DataTypes.STRING,
             allowNull: false
         },
 

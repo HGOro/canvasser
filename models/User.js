@@ -7,7 +7,7 @@ var Sequelize = require("sequelize");
 // http://docs.sequelizejs.com/class/lib/data-types.js~UUID.html
 // http://docs.sequelizejs.com/class/lib/data-types.js~UUIDV4.html
 
-var UUIDV1 = require("uuidv1"); 
+// var UUIDV1 = require("uuidv1"); 
 
 module.exports = function(sequelize, DataTypes){
     var User = sequelize.define("User", {

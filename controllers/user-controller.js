@@ -29,7 +29,7 @@ module.exports = {
       });
   },
 
-  findByVoterID: function (req, res) {
+  findOne: function (req, res) {
     // console.log("Inside user-controller",req.params.userID)
     db.User
       .findOne({ where: { userID: req.params.userID } })
@@ -39,6 +39,23 @@ module.exports = {
       })
       .catch(function (err) {
         console.log(err)
+      });
+  },
+
+  findByVoterID: function (req, res) {
+    db.User
+      .findAll({
+        where: {
+          userID: req.body.userid
+        }
+      })
+      .then(function (dbUser) {
+        console.log(dbUser)
+        res.json(dbUser)
+      })
+      .catch(function (err) {
+        console.log(err)
+        res.json({ message: "error" })
       });
   },
 
