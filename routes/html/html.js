@@ -13,14 +13,11 @@ router.get("/", function(req, res){
 
 var router = require("express").Router();
 var userController = require("../../controllers/user-controller");
+//var surveyController = require("../../controllers/survey-controller");
 
 
 router.get("/", function(req, res){
     res.render("index")
-})
-
-router.get("/search", function(req, res){
-    res.render("search")
 })
 
 router.get("/user", function(req, res){
@@ -32,6 +29,6 @@ router.get("/survey", function(req, res){
 })
 
 router.route("/survey/:userID")
-    .get( userController.findAll);
+    .get( userController.findOne);
 
 module.exports = router

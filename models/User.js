@@ -7,7 +7,7 @@ var Sequelize = require("sequelize");
 // http://docs.sequelizejs.com/class/lib/data-types.js~UUID.html
 // http://docs.sequelizejs.com/class/lib/data-types.js~UUIDV4.html
 
-//var UUIDV1 = require("uuidv1"); 
+var UUIDV1 = require("uuidv1"); 
 
 module.exports = function(sequelize, DataTypes){
     var User = sequelize.define("User", {
@@ -17,7 +17,13 @@ module.exports = function(sequelize, DataTypes){
             type: Sequelize.INTEGER,
             autoIncrement: true    
         },
-        
+         
+        //uuid: {
+        //    type: DataTypes.UUID,
+        //    defaultValue: DataTypes.UUIDV1,
+        //    isUnique: true
+        //},
+       
         firstName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -42,11 +48,12 @@ module.exports = function(sequelize, DataTypes){
             validate: {
                 min: 2
             }
-        },
+        }, 
 
         gender:{
             type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4"),
-            allowNull: false
+            //type: DataTypes.STRING,
+            //allowNull: false
         },
 
         languagePref:{
@@ -60,7 +67,7 @@ module.exports = function(sequelize, DataTypes){
             allowNull: false,
             validate:{
                 isEmail: true,
-                min: 8
+                min: 4
             }
         },
 
@@ -73,7 +80,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                min: 10
+                min: 4
             }
         },
 
@@ -81,7 +88,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: true,
             validate: {
-                min: 10
+                min: 1
             }
         },
         
@@ -106,7 +113,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                min: 5
+                min: 4
             }
         },
         

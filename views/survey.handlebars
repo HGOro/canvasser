@@ -1,86 +1,105 @@
 {{!-- this is the survey form --}}
-Hello World
+Survey Form
 
 <br/>
 {{userID}}
 <br/>
-{{firstName}}
+{{firstName}} {{lastName}}
 
 <div class= "container">
-  <h1>Search Page</h1>
+  <form id="surveyForm">
     <div class="form-group">
-      <label for="exampleFormControlSelect1">Party Affiliation</label>
-      <select class="form-control" id="partyAff">
-        <option>Democrat</option>
-        <option>Republican</option>
-        <option>Independent</option>
-        <option>Undecided</option>
-        <option>Abstain</option>
+      <label for="partyAff">Party Affiliation</label>
+      <select value="" class="form-control" id="party" required>
+        <option values="democrat">Democrat</option>
+        <option values="republican">Republican</option>
+        <option values="independent">Independent</option>
+        <option values="undecided">Undecided</option>
+        <option values="abstain">Abstain</option>
       </select>
     </div>
     
     <div class="form-group">
-      <label for="exampleFormControlSelect2">Democratic Nominee</label>
-      <select class="form-control" id="demChoice">
-        <option>Bernie Sanders</option>
-        <option>Kamala Harris</option>
-        <option>Other</option>
-        <option>Undecided</option>
-        <option>Abstain</option>
+      <label for="demNominee">Democratic Nominee</label required>
+      <select value="" class="form-control" id="demNominee">
+        <option values="bernie sanders">Bernie Sanders</option>
+        <option values="kamala harris">Kamala Harris</option>
+        <option values="other">Other</option>
+        <option values="undecided">Undecided</option>
+        <option values="abstain">Abstain</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="exampleFormControlSelect3">Proposition 1</label>
-      <select class="form-control" id="propChoice">
-        <option>Yes</option>
-        <option>No</option>
-        <option>Undecided</option>
-        <option>Abstain</option>
+      <label for="propChoice">Proposition 1</label required>
+      <select value="" class="form-control" id="prop">
+        <option values="yes">Yes</option>
+        <option values="no">No</option>
+        <option values="undecided">Undecided</option>
+        <option values="abstain">Abstain</option>
       </select>
     </div>
     
     <div class="form-group">
-      <label for="exampleFormControlTextarea4">Notes</label>
+      <label for="notes">Notes</label>
       <textarea class="form-control" id="notes" rows="3"></textarea>
     </div>
 
-    <button class="btn btn-primary" id="survey">Submit Survey</button>
-
+    <button class="btn btn-primary" id="submit-survey">Submit Survey</button>
+  
+  </form>
 
 </div>
 
 <script>
 
-$("#submit").click(function(event){
+$("#submit-survey").click(function(event){
     event.preventDefault();
-    populateSurveyData();
+    //populateSurveyData();
+
+    var formIsValid = $("#surveyForm")[0].checkValidity()
+
+    if(formIsValid){
+      populateSurveyData()
+      //console.log(true)
+    }else{
+      alert("fill in required fields")
+      return
+    }
+    location.href = "/";
 });
 
 function populateSurveyData() {
   var surveyData = {}
-  $("option").each(function() {
-    
+
+  var url = window.location.href;
+  url = url.split("/");
+  var userID = url[url.length -1];
+  surveyData.userID = userID;
+
+  $("select").each(function(){
     var elementVal = $(this).val();
     var elementID = $(this).attr("id");
-    
-    if(elementVal.length > 0){
+
+    if(elementVal.length > 0 && elementVal !== undefined){
       surveyData[elementID] = elementVal;
       $(this).val("");
     }
-
-    createNewSurvey(surveyData);
-    console.log(surveyData);
-
   });
 
+  if($("#notes").val().trim().length > 0){
+    surveyData.notes = $("#notes").val().trim();
+  }
+
+  console.log(surveyData);
+  createNewSurvey(surveyData);
 }
 
 function createNewSurvey(surveyData){
   
   $.post("/api/survey", surveyData, function(results){
     console.log(results);
-    });
+  });
 }
 
 </script>

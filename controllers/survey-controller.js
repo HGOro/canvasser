@@ -16,12 +16,11 @@ module.exports = {
     },
     create: function(req, res){
         console.log(req.body)
-//        db.Survey
-//        .create(req.body)        
-//        .then(function(dbSurvey){
-//            res.json(dbSurvey)
-//        })
-    
+        db.Survey
+        .create(req.body)        
+        .then(function(dbSurvey){
+            res.json(dbSurvey)
+        })    
     },
     delete: function(req, res){
         console.log(req.body)
@@ -36,7 +35,12 @@ module.exports = {
         return dbSurvey
     },
     findAll: function(req, res){
-        console.log(req.body)
+        db.Survey
+        .findAll()
+        .then(function(allSurvey){
+            res.json(allSurvey)
+        })
+        
     },
     deleteAll: function(req, res){
         console.log(req.body)
