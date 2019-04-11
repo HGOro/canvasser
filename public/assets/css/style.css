@@ -2,6 +2,10 @@
     display: none;
 }
 
+* {
+    font-family: 'Fredericka the Great', cursive;
+  }
+  
 /* Main border css */
 .clipBoard{
     border-style: solid;
