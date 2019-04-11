@@ -17,37 +17,44 @@ module.exports = function(sequelize, DataTypes){
             autoIncrement: true   
         },
 
-        firstName:{
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                is: ["^[a-z]+$",'i'],
-                min: 1
-            }
-        },
+        //firstName:{
+        //    type: DataTypes.STRING,
+        //    allowNull: false,
+        //    validate: {
+        //        is: ["^[a-z]+$",'i'],
+        //        min: 1
+        //    }
+        //},
         
-        lastName:{
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                is: ["^[a-z]+$",'i'],
-                min: 1
-            }
-        },
+        //lastName:{
+        //    type: DataTypes.STRING,
+        //    allowNull: false,
+        //    validate: {
+        //        is: ["^[a-z]+$",'i'],
+        //        min: 1
+        //    }
+        //},
 
         party:{
-            type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4", "value 5" ),
+            //type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4", "value 5" ),
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+
+        demNominee:{
+            type: DataTypes.STRING,
             allowNull: false
         },
 
         prop:{
-            type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4"),
+            //type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4"),
+            type: DataTypes.STRING,
             allowNull: false
         },
 
         notes:{
             type: DataTypes.STRING,
-            allowNull: true
+            //allowNull: true
         },
 
         createdAt: Sequelize.DATE, 
