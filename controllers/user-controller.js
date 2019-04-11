@@ -28,15 +28,9 @@ module.exports = {
     },
     findByVoterID: function (req, res) {
         db.User
-            .findAll(
-                {
-                    where:
-                    {
-                        firstName: req.body.firstname,
-                        lastName: req.body.lastname
-                    }
-                }
-            )
+            .findAll({where:{
+                userID: req.body.userid    
+            }}                                                                                                                                                                                                    )
             .then(function (dbUser) {
                 console.log(dbUser)
                 res.json(dbUser)

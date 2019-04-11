@@ -15,6 +15,7 @@ router.route("/all")
 
 //michelle getting user data from table to send to map api
 router.post("/search", userController.findByName);
+router.post("/search", userController.findByVoterID);
 
 
 

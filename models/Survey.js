@@ -58,7 +58,7 @@ module.exports = function(sequelize, DataTypes){
     //associations
     Survey.associate = function(models){
         Survey.belongsTo(models.User, {
-            foreignKey: "userUUID", 
+            foreignKey: "userID", 
             onDelete: "cascade"
         })
     }

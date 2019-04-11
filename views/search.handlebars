@@ -11,16 +11,17 @@
       </div>
 
       <div id="followupSearchBox">
-         <h1>Followup Voter Search:</h1>
+         <h1>Follow-Up Voter Search:</h1>
          <label for="firstNameSearch" id="fns">First Name: </label>
          <input id="firstName" type="text" class="form-control"><br>
          <label for="lastNameSearch" id="lns">Last Name: </label>
          <input id="lastName" type="text" class="form-control"><br>
+         <button id="search2">Search</button><br>
 
          <h2>OR</h2>
          <label for="idSearch" id="ids">Voter ID#: </label>
          <input id="voterID" type="text" class="form-control"><br>
-         <button id="search2">Search</button><br>
+         <button id="search3">Search</button><br>
 
       </div>
 
@@ -99,6 +100,37 @@
          newAddress = newStreet + ", " + newCity + ", " + newState + " " + newZip;
          lookupAddress(newAddress);
 
+      })
+
+      $("#firstName").val("");
+      $("#lastName").val("");
+      $("#voterID").val("");
+
+   });
+
+   $("#search3").on("click", function () {
+      var inputVoterID = $("#voterID").val().trim();
+      console.log(inputVoterID);
+      
+      var dataQuery = "/api/user/search"
+      $.ajax({
+         url: dataQuery,
+         method: "POST",
+         data: {
+            userid: inputVoterID
+         }
+      }).then(function (response) {
+         console.log(response);
+
+         newStreet = response[0].address;
+         newCity = response[0].city;
+         newState = response[0].state;
+         newZip = response[0].zip;
+
+         console.log(newStreet + ", " + newCity + ", " + newState + " " + newZip);
+
+         newAddress = newStreet + ", " + newCity + ", " + newState + " " + newZip;
+         lookupAddress(newAddress);
       })
 
       $("#firstName").val("");
