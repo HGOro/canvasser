@@ -6,7 +6,8 @@ var Sequelize = require("sequelize");
 // http://docs.sequelizejs.com/class/lib/data-types.js~UUID.html
 // http://docs.sequelizejs.com/class/lib/data-types.js~UUIDV4.html
 
-var UUIDV1 = require("uuidv1"); 
+//
+//var UUIDV1 = require("uuidv1"); 
 
 module.exports = function(sequelize, DataTypes){
     var Survey = sequelize.define("Survey", {
@@ -24,7 +25,7 @@ module.exports = function(sequelize, DataTypes){
         //},
         
         party:{
-            type: DataTypes.STRING,
+            type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4", "value 5"),
             allowNull: false
         },
 

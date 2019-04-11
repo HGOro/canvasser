@@ -13,4 +13,14 @@ router.route("/all")
     .get(userController.findAll)
     .delete(userController.deleteAll);
 
+//getting user data from table to send to map api
+
+router.post("/search/name", userController.findByName);
+router.post("/search/byid", userController.findByVoterID);
+
+
+
+
+
+
 module.exports = router
