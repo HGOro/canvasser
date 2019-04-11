@@ -1,0 +1,46 @@
+ /* Always set the map height explicitly to define the size of the div
+   * element that contains the map. */
+#map {
+   margin: 40px;
+   margin-top: 50px;
+   height: 92%;
+   width: 40%;
+   float: left;
+   overflow: hidden;
+}
+
+#searchDIV {
+   margin-left: 50%;
+   margin-bottom: 50px;
+   padding-top: 30px;
+   font-family: 'Fredericka the Great', cursive;
+}
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+   height: 100%;
+   margin: 20px;
+   padding: 10px;
+}
+
+#ads, #fns, #lns, #ids {
+   font-size: 22px;
+}
+
+#searchBox,
+#followupSearchBox {
+   display: inline-block;
+}
+
+#linkToUser {
+   margin-right: auto;
+   margin-left: auto;
+   margin-top: 40px;
+   
+}
+
+#linkBtn {
+   font-family: 'Fredericka the Great', cursive;
+   font-size: 22px;
+}

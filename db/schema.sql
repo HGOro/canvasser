@@ -4,3 +4,4 @@ CREATE DATABASE canvasser_db;
 
 USE canvasser_db;
 
+//sequelize models are creating the tables
