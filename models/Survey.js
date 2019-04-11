@@ -16,6 +16,12 @@ module.exports = function(sequelize, DataTypes){
             type: Sequelize.INTEGER,
             autoIncrement: true   
         },
+        
+        uuid: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV1,
+            isUnique: true
+        },
 
         firstName:{
             type: DataTypes.STRING,
@@ -58,7 +64,7 @@ module.exports = function(sequelize, DataTypes){
     //associations
     Survey.associate = function(models){
         Survey.belongsTo(models.User, {
-            foreignKey: "userID", 
+            foreignKey: "userUUID", 
             onDelete: "cascade"
         })
     }

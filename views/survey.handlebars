@@ -58,7 +58,7 @@ $("#submit").click(function(event){
 
 function populateSurveyData() {
   var surveyData = {}
-  $("option").each(function() {
+  $("option").each(function) {
     
     var elementVal = $(this).val();
     var elementID = $(this).attr("id");
@@ -71,7 +71,7 @@ function populateSurveyData() {
     createNewSurvey(surveyData);
     console.log(surveyData);
 
-  });
+  }
 
 }
 
