@@ -11,7 +11,6 @@ var UUIDV1 = require("uuidv1");
 
 module.exports = function(sequelize, DataTypes){
     var User = sequelize.define("User", {
-        
         userID:{
             primaryKey: true,
             type: Sequelize.INTEGER,

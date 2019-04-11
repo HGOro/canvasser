@@ -50,7 +50,6 @@ module.exports = function(sequelize, DataTypes){
             allowNull: true
         },
 
-
         createdAt: Sequelize.DATE, 
         updatedAt: Sequelize.DATE
 
