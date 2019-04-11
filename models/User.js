@@ -17,12 +17,12 @@ module.exports = function(sequelize, DataTypes){
             type: Sequelize.INTEGER,
             autoIncrement: true    
         },
-        
-        uuid: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV1,
-            isUnique: true
-        },
+         
+        //uuid: {
+        //    type: DataTypes.UUID,
+        //    defaultValue: DataTypes.UUIDV1,
+        //    isUnique: true
+        //},
        
         firstName: {
             type: DataTypes.STRING,
@@ -48,11 +48,12 @@ module.exports = function(sequelize, DataTypes){
             validate: {
                 min: 2
             }
-        },
+        }, 
 
         gender:{
             type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4"),
-            allowNull: false
+            //type: DataTypes.STRING,
+            //allowNull: false
         },
 
         languagePref:{
@@ -66,7 +67,7 @@ module.exports = function(sequelize, DataTypes){
             allowNull: false,
             validate:{
                 isEmail: true,
-                min: 8
+                min: 4
             }
         },
 
@@ -79,7 +80,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                min: 10
+                min: 4
             }
         },
 
@@ -87,7 +88,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: true,
             validate: {
-                min: 10
+                min: 1
             }
         },
         
@@ -95,7 +96,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                is: ["^[a-z]+$",'i'],
+                //is: ["^[a-z]+$",'i'],
                 min: 2
             }
         },
@@ -112,7 +113,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                min: 5
+                min: 4
             }
         },
         

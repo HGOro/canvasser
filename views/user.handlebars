@@ -11,19 +11,34 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputAge">Age <span>(optional)</span></label>
-            <input type="number" class="form-control" id="age">
-        </div>
+        <div class="row">
+            <div class="form-group col-4">
+                <label for="inputAge">Age</label>
+                <input type="number" class="form-control" id="age">
+            </div>
 
-        <div class="form-group">
-            <label for="inputAge">Gender <span>(optional)</span></label>
-            <input type="input" class="form-control" id="gender">
-        </div>
+            <div class="form-group col-4">
+                <label for="inputGend">Gender</label>
+                <div class="row">
+                    <select id="gender">
+                        <option> Male </option>
+                        <option> Female </option>
+                        <option> Non-binary </option>
+                        <option> Prefer not to say </option>
+                    </select>
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label for="inputLang">Language Preference <span>(optional)</span></label>
-            <input type="text" class="form-control" id="language">
+            <div class="form-group col-4">
+                <label for="inputLang">Language Preference </label>
+                <div class="row">
+                    <select id="language">
+                        <option value="english">English</option>
+                        <option value="mandarin">Mandarin</option>
+                        <option value="spanish">Spanish</option>
+                    </select>
+                </div>
+            </div>
         </div>
 
         <div class="form-group">
@@ -77,7 +92,7 @@
         <p id="confirmGender"></p>
         <p id="confirmAge"></p>
 
-        <button class="btn btn-primary" id="survey">Take Survey</button>
+        <button class="btn btn-primary" id="survey">Answer Poll</button>
     </div>
 </div>
 
@@ -131,7 +146,7 @@ function createNewUser(userData){
         if(results.languagePref !== undefined){
            $("#confirmLang").text(results.languagePref)
         }
-        $("#survey").data("userID", results.uuid)
+        $("#survey").data("userID", results.userID)
         $("#userForm").slideUp("slow")
         $("#confirmation").slideDown("slow")
     })

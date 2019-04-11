@@ -10,61 +10,106 @@ var UUIDV1 = require("uuidv1");
 
 module.exports = function(sequelize, DataTypes){
     var Survey = sequelize.define("Survey", {
-        
         userID:{
             primaryKey: true,
             type: Sequelize.INTEGER,
             autoIncrement: true   
         },
         
-        uuid: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV1,
-            isUnique: true
-        },
-
-        firstName:{
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                is: ["^[a-z]+$",'i'],
-                min: 1
-            }
-        },
+        //uuid: {
+        //    primaryKey: true,
+        //    type: DataTypes.UUID,
+        //    defaultValue: DataTypes.UUIDV1,
+        //    isUnique: true
+        //},
         
-        lastName:{
+        party:{
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                is: ["^[a-z]+$",'i'],
-                min: 1
-            }
+            allowNull: false
         },
 
-        party:{
-            type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4", "value 5" ),
+        demNominee:{
+            type: DataTypes.STRING,
             allowNull: false
         },
 
         prop:{
-            type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4"),
+            type: DataTypes.STRING,
             allowNull: false
         },
 
-        notes:{
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-
+        notes: DataTypes.STRING,
 
         createdAt: Sequelize.DATE, 
         updatedAt: Sequelize.DATE
 
     })
+        
+        
+        
+        
+        //
+        //userID:{
+        //    primaryKey: true,
+        //    type: Sequelize.INTEGER,
+        //    autoIncrement: true   
+        //},
+        //
+        //uuid: {
+        //    type: DataTypes.UUID,
+        //    defaultValue: DataTypes.UUIDV1,
+        //    isUnique: true
+        //},
+//
+        //firstName:{
+        //    type: DataTypes.STRING,
+        //    //allowNull: false,
+        //    validate: {
+        //        is: ["^[a-z]+$",'i'],
+        //        min: 1
+        //    }
+        //},
+//
+        //lastName:{
+        //    type: DataTypes.STRING,
+        //    //allowNull: false,
+        //    validate: {
+        //        is: ["^[a-z]+$",'i'],
+        //        min: 1
+        //    }
+        //},
+//
+        //party:{
+        //    type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4", "value 5" ),
+        //    //type: DataTypes.STRING,
+        //    allowNull: false
+        //},
+//
+        //demNominee:{
+        //    //type: DataTypes.STRING,
+        //    type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4", "value 5" ),
+        //    allowNull: false
+        //},
+//
+        //prop:{
+        //    type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4"),
+        //    //type: DataTypes.STRING,
+        //    allowNull: false
+        //},
+//
+        //notes:{
+        //    type: DataTypes.STRING,
+        //    allowNull: true
+        //},
+//
+        //createdAt: Sequelize.DATE, 
+        //updatedAt: Sequelize.DATE
+//
+//    })
     //associations
     Survey.associate = function(models){
         Survey.belongsTo(models.User, {
-            foreignKey: "userUUID", 
+            foreignKey: "surveyuserID", 
             onDelete: "cascade"
         })
     }
