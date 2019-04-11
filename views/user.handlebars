@@ -146,7 +146,7 @@ function createNewUser(userData){
         if(results.languagePref !== undefined){
            $("#confirmLang").text(results.languagePref)
         }
-        $("#survey").data("userID", results.uuid)
+        $("#survey").data("userID", results.userID)
         $("#userForm").slideUp("slow")
         $("#confirmation").slideDown("slow")
     })

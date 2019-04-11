@@ -75,7 +75,7 @@ function populateSurveyData() {
   var url = window.location.href;
   url = url.split("/");
   var userID = url[url.length -1];
-  surveyData.userUUID = userID;
+  surveyData.userID = userID;
 
   $("select").each(function(){
     var elementVal = $(this).val();

@@ -11,17 +11,18 @@ var UUIDV1 = require("uuidv1");
 
 module.exports = function(sequelize, DataTypes){
     var User = sequelize.define("User", {
+        
         userID:{
             primaryKey: true,
             type: Sequelize.INTEGER,
             autoIncrement: true    
         },
-        
-        uuid: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV1,
-            isUnique: true
-        },
+         
+        //uuid: {
+        //    type: DataTypes.UUID,
+        //    defaultValue: DataTypes.UUIDV1,
+        //    isUnique: true
+        //},
        
         firstName: {
             type: DataTypes.STRING,
@@ -66,7 +67,7 @@ module.exports = function(sequelize, DataTypes){
             allowNull: false,
             validate:{
                 isEmail: true,
-                min: 8
+                min: 4
             }
         },
 
@@ -79,7 +80,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                min: 10
+                min: 4
             }
         },
 
@@ -87,7 +88,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: true,
             validate: {
-                min: 10
+                min: 1
             }
         },
         
@@ -112,7 +113,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                min: 5
+                min: 4
             }
         },
         
