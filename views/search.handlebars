@@ -1,5 +1,13 @@
 <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Sawarabi+Mincho" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/searchpage.css">
+
+<div class="header1">
+   <a href="/index" id="homeLink" class="headerLink headPad marg1">Home</a>
+   <a href="/user" id="newUserLink" class="headerLink headPad">New User</a>
+   <img src="/assets/img/canvasser-logo.png" alt="logo" class="headerLogo headPad" width="100" height="200">
+   <a href="/survey" id="surveyLink" class="headerLink headPad">Survey</a>
+</div>
+
 <div id="map"></div>
 <div id="searchDIV">
    <div id="searchBox">
@@ -31,6 +39,17 @@
             </button></a>
       </div>
    </div>
+
+   <div id="nameModal" class="modal">
+            <div class="modal-content">
+                  <span class="close">&times;</span>
+               <div class="modal-body">
+                  <h2 id="namePopUp"></h2>
+                  
+               </div>
+            </div>
+         </div>
+
 </div>
 
 
@@ -79,7 +98,7 @@
       var fullName = inputFirstName + inputLastName;
       console.log(fullName);
 
-      var dataQuery = "/api/user/search"
+      var dataQuery = "/api/user/search/name"
       $.ajax({
          url: dataQuery,
          method: "POST",
@@ -99,7 +118,6 @@
 
          newAddress = newStreet + ", " + newCity + ", " + newState + " " + newZip;
          lookupAddress(newAddress);
-
       })
 
       $("#firstName").val("");
@@ -108,11 +126,12 @@
 
    });
 
+   
    $("#search3").on("click", function () {
       var inputVoterID = $("#voterID").val().trim();
       console.log(inputVoterID);
       
-      var dataQuery = "/api/user/search"
+      var dataQuery = "/api/user/search/byid"
       $.ajax({
          url: dataQuery,
          method: "POST",
@@ -126,12 +145,23 @@
          newCity = response[0].city;
          newState = response[0].state;
          newZip = response[0].zip;
+         newFirst = response[0].firstName;
+         newLast = response[0].lastName;
 
          console.log(newStreet + ", " + newCity + ", " + newState + " " + newZip);
 
          newAddress = newStreet + ", " + newCity + ", " + newState + " " + newZip;
          lookupAddress(newAddress);
-      })
+
+         newName = newLast + ", " + newFirst;
+
+         $("#namePopUp").text(newName);
+         $("#nameModal").show();
+      
+        $(".close").on("click", function(event){
+            $("#nameModal").hide();
+         });
+      });
 
       $("#firstName").val("");
       $("#lastName").val("");

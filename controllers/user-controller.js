@@ -26,6 +26,7 @@ module.exports = {
                 console.log(err)
             });
     },
+    
     findByVoterID: function (req, res) {
         db.User
             .findAll({where:{
@@ -40,9 +41,11 @@ module.exports = {
                 res.json({message: "error"})
             });
     },
+    
     update: function (req, res) {
         console.log(req.body)
     },
+    
     create: function (req, res) {
         console.log(req.body)
 
@@ -52,13 +55,16 @@ module.exports = {
                 res.json(dbUser)
             })
     },
+    
     delete: function (req, res) {
         console.log(req.body)
 
     },
+    
     findAll: function(req, res){
         console.log(req.body)
     },
+    
     deleteAll: function (req, res) {
         console.log(req.body)
     }

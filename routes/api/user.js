@@ -13,9 +13,10 @@ router.route("/all")
     .get(userController.findAll)
     .delete(userController.deleteAll);
 
-//michelle getting user data from table to send to map api
-router.post("/search", userController.findByName);
-router.post("/search", userController.findByVoterID);
+//getting user data from table to send to map api
+
+router.post("/search/name", userController.findByName);
+router.post("/search/byid", userController.findByVoterID);
 
 
 
