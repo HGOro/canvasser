@@ -11,22 +11,14 @@ var UUIDV1 = require("uuidv1");
 
 module.exports = function(sequelize, DataTypes){
     var User = sequelize.define("User", {
-        uuid: {
+        
+        userID:{
             primaryKey: true,
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV1,
-            isUnique: true
+            type: Sequelize.INTEGER,
+            autoIncrement: true    
         },
-        email:{
-            type: DataTypes.STRING,
-            isUnique: true,
-            allowNull: false,
-            validate:{
-                isEmail: true,
-                min: 5
-            }
-        },
-        firstName:{
+        
+        firstName: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -34,6 +26,7 @@ module.exports = function(sequelize, DataTypes){
                 min: 1
             }
         },
+        
         lastName:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -41,55 +34,83 @@ module.exports = function(sequelize, DataTypes){
                 is: ["^[a-z]+$",'i'],
                 min: 1
             }
+        },
 
-        },
-        city:{
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                is: ["^[a-z]+$",'i'],
-                min: 1
-            }
-        },
-        state:{
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                is: ["^[a-z]+$",'i'],
-                min: 1
-            }
-        },
-        zip:{
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                min: 5
-            }
-        },
-        address:{
+        age:{
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 min: 2
             }
         },
+
+        gender:{
+            type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4"),
+            allowNull: false
+        },
+
+        languagePref:{
+            type: DataTypes.ENUM("value 1", "value 2", "value 3", "value 4", "value 5"),
+            allowNull: true
+        },
+
+        email:{
+            type: DataTypes.STRING,
+            isUnique: true,
+            allowNull: false,
+            validate:{
+                isEmail: true,
+                min: 8
+            }
+        },
+
         phoneNumber:{
             type: DataTypes.STRING,
             allowNull: true
         },
-        age:{
+
+        address:{
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false,
+            validate: {
+                min: 10
+            }
         },
-        languagePref:{
+
+        address2:{
             type: DataTypes.STRING,
             allowNull: true,
-            defaultValue: "English"
+            validate: {
+                min: 10
+            }
         },
-        gender:{
+        
+        city:{
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false,
+            validate: {
+                is: ["^[a-z]+$",'i'],
+                min: 2
+            }
         },
+        
+        state:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                is: ["^[a-z]+$",'i'],
+                min: 2
+            }
+        },
+        zip:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                min: 5
+            }
+        },
+        
+        
         createdAt: Sequelize.DATE, 
         updatedAt: Sequelize.DATE
 
@@ -97,7 +118,7 @@ module.exports = function(sequelize, DataTypes){
     //associations
     User.associate = function(models){
         User.hasOne(models.Survey, {
-            foreignKey: "surveyUUID", 
+            foreignKey: "surveyuserID", 
             onDelete: "cascade"
         })
     }

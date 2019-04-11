@@ -8,42 +8,64 @@ var db = require("../models");
 // define methods here
 
 module.exports = {
-    find: function(req, res){
+    find: function (req, res) {
         console.log(req.body)
-//when finding One, find by email; once you know user's ID find survey information to send along
+        //when finding One, find by email; once you know user's ID find survey information to send along
     },
-    findOne: function(req, res){
-        // console.log(req.params.userID)
+    findByName: function (req, res) {
         db.User
-        .findOne({where: {uuid: req.params.userID}})
-        .then(function(dbUser){
-            // console.log(dbUser)
-            res.render("survey", dbUser.dataValues)
-        })
-        .catch(function(err){
-            console.log(err)
-        });
+            .findAll({where:{
+                firstName: req.body.firstname,
+                lastName: req.body.lastname
+            }})
+            .then(function (dbUser) {
+                console.log(dbUser)
+                res.json(dbUser)
+            })
+            .catch(function (err) {
+                console.log(err)
+            });
     },
-    update: function(req, res){
+    findByVoterID: function (req, res) {
+        db.User
+            .findAll(
+                {
+                    where:
+                    {
+                        firstName: req.body.firstname,
+                        lastName: req.body.lastname
+                    }
+                }
+            )
+            .then(function (dbUser) {
+                console.log(dbUser)
+                res.json(dbUser)
+            })
+            .catch(function (err) {
+                console.log(err)
+                res.json({message: "error"})
+            });
+    },
+    update: function (req, res) {
         console.log(req.body)
     },
-    create: function(req, res){
+    create: function (req, res) {
         console.log(req.body)
 
         db.User
-        .create(req.body)
-        .then(function(dbUser){
-            res.json(dbUser)
-        })
+            .create(req.body)
+            .then(function (dbUser) {
+                res.json(dbUser)
+            })
     },
-    delete: function(req, res){
+    delete: function (req, res) {
         console.log(req.body)
 
     },
     findAll: function(req, res){
         console.log(req.body)
     },
-    deleteAll: function(req, res){
+    deleteAll: function (req, res) {
         console.log(req.body)
     }
 }

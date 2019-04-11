@@ -13,4 +13,12 @@ router.route("/all")
     .get(userController.findAll)
     .delete(userController.deleteAll);
 
+//michelle getting user data from table to send to map api
+router.post("/search", userController.findByName);
+
+
+
+
+
+
 module.exports = router

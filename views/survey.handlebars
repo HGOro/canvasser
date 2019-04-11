@@ -1,6 +1,7 @@
 {{!-- this is the survey form --}}
 Hello World
 
+<<<<<<< HEAD
 <br />
 {{uuid}}
 <br />
@@ -51,8 +52,87 @@ Hello World
     <textarea class="form-control border border-danger" id="notes" rows="3"></textarea>
   </div>
   <button class="btn btn-primary" id="survey">Submit Survey</button>
+=======
+<br/>
+{{userID}}
+<br/>
+{{firstName}}
+
+<div class= "container">
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Party Affiliation</label>
+      <select class="form-control" id="partyAff">
+        <option>Democrat</option>
+        <option>Republican</option>
+        <option>Independent</option>
+        <option>Undecided</option>
+        <option>Abstain</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleFormControlSelect2">Democratic Nominee</label>
+      <select class="form-control" id="demChoice">
+        <option>Bernie Sanders</option>
+        <option>Kamala Harris</option>
+        <option>Other</option>
+        <option>Undecided</option>
+        <option>Abstain</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlSelect3">Proposition 1</label>
+      <select class="form-control" id="propChoice">
+        <option>Yes</option>
+        <option>No</option>
+        <option>Undecided</option>
+        <option>Abstain</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleFormControlTextarea4">Notes</label>
+      <textarea class="form-control" id="notes" rows="3"></textarea>
+    </div>
+
+    <button class="btn btn-primary" id="survey">Submit Survey</button>
+
+
+>>>>>>> 4ca340bfe81144257996efcdb2430fc642d16014
 </div>
 
-{{!-- put jquery to collect form data here --}}
 <script>
+
+$("#submit").click(function(event){
+    event.preventDefault();
+    populateSurveyData();
+});
+
+function populateSurveyData() {
+  var surveyData = {}
+  $("option").each(function) {
+    
+    var elementVal = $(this).val();
+    var elementID = $(this).attr("id");
+    
+    if(elementVal.length > 0){
+      surveyData[elementID] = elementVal;
+      $(this).val("");
+    }
+
+    createNewSurvey(surveyData);
+    console.log(surveyData);
+
+  }
+
+}
+
+function createNewSurvey(surveyData){
+  
+  $.post("/api/survey", surveyData, function(results){
+    console.log(results);
+    });
+}
+
 </script>
