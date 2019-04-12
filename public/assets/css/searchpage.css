@@ -39,7 +39,8 @@
 }
 
 body {
-   background-color: #e4eaf1
+   background-color: #e4eaf1;
+   margin-bottom: 20px;
 }
 
 
@@ -50,7 +51,7 @@ h1 {
  #map {
    margin: 40px;
    margin-top: 70px;
-   height: 80%;
+   height: 90%;
    width: 40%;
    float: left;
    overflow: hidden;
