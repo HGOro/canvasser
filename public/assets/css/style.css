@@ -51,6 +51,12 @@ body{
      font-size: 4vw; 
 }
 
+
+.flag{
+    margin-left: 0;
+    margin-right: 0;
+    }
+    
 p {
     margin: 0;
 }
