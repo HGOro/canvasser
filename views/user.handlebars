@@ -152,6 +152,13 @@
             populateUserData()
             console.log(true)
         }
+        $("#survey").data("userID", results.userID)
+        $("#userForm").slideUp("slow")
+        $("#confirmation").slideDown("slow")
+    })
+    $("#survey").click(function(){
+        var userID = $(this).data("userID")
+        window.location.href = "/survey/" + userID
     })
     function populateUserData() {
         var userData = {}

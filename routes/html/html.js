@@ -33,6 +33,6 @@ router.get("/survey", function(req, res){
 })
 
 router.route("/survey/:userID")
-    .get( userController.findAll);
+    .get( userController.findOne);
 
 module.exports = router

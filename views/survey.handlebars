@@ -10,7 +10,7 @@ Survey Form
 
 
 <div class="clipBoard">
-  
+
    <div class="header1">
         <a href="/index" class="headerLink headPad marg1">Home</a>
         <a href="/user" class="headerLink headPad">User</a>
@@ -85,17 +85,13 @@ Survey Form
   });
 
 
-  function populateSurveyData() {
-    var surveyData = {}
+function populateSurveyData() {
+  var surveyData = {}
 
-    var url = window.location.href;
-    url = url.split("/");
-    var userID = url[url.length - 1];
-    surveyData.userUUID = userID;
-
-    $("select").each(function () {
-      var elementVal = $(this).val();
-      var elementID = $(this).attr("id");
+  var url = window.location.href;
+  url = url.split("/");
+  var userID = url[url.length -1];
+  surveyData.userID = userID;
 
       if (elementVal.length > 0 && elementVal !== undefined) {
         surveyData[elementID] = elementVal;
