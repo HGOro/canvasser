@@ -1,4 +1,158 @@
 .hide {
     display: none;
+}
+
+* {
+    font-family: 'Fredericka the Great', cursive;
+  }
+  
+/* Main border css */
+.clipBoard{
+    border-style: solid;
+    border-color: #74370c;
+    border-width: 18px;
+}
+
+body{
+    background-color:#e4eaf1;
+}
+
+/* --------------------------------------- */
+
+
+/*css for Flag display on user.handlebar and index.handlebar*/
+.jumbotron {
+    padding: 0px 0px 0px 0px;
+}
+
+#stripes {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+
+}
+.col-12{
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+#redStripe {
+    height: 25px;
+}
+#whiteStripe {
+    height: 25px;
+}
+
+#stars {
+    color: white;
+     font-size: 4vw; 
+}
+
+
+.flag{
+    margin-left: 0;
+    margin-right: 0;
+    }
+    
+p {
+    margin: 0;
+}
+
+/*------------------------------------------*/
+
+/* css for survey.handlebars */
+#scales {
+    padding: 1%;
+}
+
+.donk {
+    color: blue;
+}
+
+.eleph {
+    color: red;
+}
+/* ------------------------------------------ */
+
+
+/* header css */
+.header1{
+    width: 80%;
+    height: 5vh;
+    margin-left: 10%;
+    background-color: #1889ff;
+    border-style: solid;
+    border-color: black;
+    border-width: medium;
+}
+.marg1 {
+    margin-left: 11%;
+}
+.marg2 {
+    margin-right: 10%;
+}
+
+.headerLogo{
+    height: 100%;
+}
+
+.headerLink{
+    color: crimson;
+}
+
+.headPad{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+@media (max-width: 768px){
+    .headerLink{
+        font-size: 80%;
+    }
+    .headPad{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .marg1 {
+        margin-left: 5%;
+    }
+    .marg2 {
+        margin-right: 5%;
+    }
+}
+@media (max-width: 375px) {
+    .headPad{
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .marg1 {
+        margin-left: 1%;
+    }
+    .marg2 {
+        margin-right: 1%;
+    }
+}
+/* -------------------- */
+
+/* Homepage css */
+
+h4 {
+    text-align: center;
+}
+
+#MG {
+    padding: 1%;
+}
+
+@media (max-width: 576px) {
+
+.smallFont{
+    font-size: 50%;  
     
 }
+}
+
+/* ----------------------------------------------- */
