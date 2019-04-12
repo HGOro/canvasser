@@ -40,7 +40,7 @@ app.use(routes);
 // Launch Server ==============================================
 //listen on port 3001
 
-db.sequelize.sync({force: true}).then(function(){
+db.sequelize.sync({force: false}).then(function(){
     app.listen(PORT, function(){
         console.log("🌎  ==> Server now listening on PORT:" + PORT);
     });
