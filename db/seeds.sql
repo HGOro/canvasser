@@ -11,10 +11,10 @@ VALUES
 
 SELECT * FROM canvasser_db.Surveys;
 
-INSERT into Surveys (firstName, lastName, party, prop)
+INSERT into Surveys (userID, party, demNominee, prop)
 VALUES
-("Night", "King", "2","1"),
-("Jon", "Snow", "3", "2"),
-("Jaime", "Lannister", "4", "3"),
-("Rob", "Stark", "3", "2"),
-("Sansa", "Stark", "3", "2")
+("1", "2", "Bernie Sanders", "1"),
+("2", "3", "Kamala Harris", "2"),
+("3", "4", "Kamala Harris","3"),
+("4", "3", "Kamala Harris", "2"),
+("5", "3", "Kamala Harris", "2")

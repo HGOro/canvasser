@@ -45,6 +45,7 @@
                   <span class="close">&times;</span>
                <div class="modal-body">
                   <h2 id="namePopUp"></h2>
+                  <h2 id="popUpLn2"></h2>
                   
                </div>
             </div>
@@ -89,6 +90,9 @@
       console.log(inputAddress);
 
       lookupAddress(inputAddress);
+
+      $("#firstName").val("");
+      $("#lastName").val("")
    })
 
 
@@ -118,6 +122,14 @@
 
          newAddress = newStreet + ", " + newCity + ", " + newState + " " + newZip;
          lookupAddress(newAddress);
+
+         $("#namePopUp").text(newAddress);
+         $("#nameModal").show();
+      
+        $(".close").on("click", function(event){
+           $("#namePopUp").text("");
+            $("#nameModal").hide();
+         });
       })
 
       $("#firstName").val("");
@@ -155,7 +167,8 @@
 
          newName = newLast + ", " + newFirst;
 
-         $("#namePopUp").text(newName);
+         $("#namePopUp").text(newName); 
+         $("#popUpLn2").text(newAddress);
          $("#nameModal").show();
       
         $(".close").on("click", function(event){
