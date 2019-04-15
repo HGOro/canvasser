@@ -91,22 +91,26 @@ function populateSurveyData() {
   var url = window.location.href;
   url = url.split("/");
   var userID = url[url.length -1];
-  surveyData.userID = userID;
+  surveyData.user = userID;
 
+  $("select").each(function(){
+    var elementVal = $(this).val();
+    var elementID = $(this).attr("id");
+  
       if (elementVal.length > 0 && elementVal !== undefined) {
         surveyData[elementID] = elementVal;
         $(this).val("");
       }
-    });
 
-    if ($("#notes").val().trim().length > 0) {
-      surveyData.notes = $("#notes").val().trim();
-    }
+      if ($("#notes").val().trim().length > 0) {
+        surveyData.notes = $("#notes").val().trim();
+      }
 
-    console.log(surveyData);
-    createNewSurvey(surveyData);
-  }
-
+      console.log(surveyData);
+      createNewSurvey(surveyData);
+  });
+  
+}
   function createNewSurvey(surveyData) {
 
     $.post("/api/survey", surveyData, function (results) {

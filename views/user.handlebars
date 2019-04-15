@@ -156,55 +156,59 @@
         $("#userForm").slideUp("slow")
         $("#confirmation").slideDown("slow")
     })
+    
     $("#survey").click(function(){
         var userID = $(this).data("userID")
         window.location.href = "/survey/" + userID
     })
-    function populateUserData() {
-        var userData = {}
-        $("input").each(function () {
-            //console.log(element.val())
-            //console.log($(this))
-            var elementVal = $(this).val().trim()
-            var elementID = $(this).attr("id")
-            if (elementVal.length > 0) {
-                //if ID is equal to phone number, make sure to format the phone number
-                userData[elementID] = elementVal
-                $(this).val("")
+    
+function populateUserData() {
+    var userData = {}
+    $("input").each(function () {
+        //console.log(element.val())
+        //console.log($(this))
+        var elementVal = $(this).val().trim()
+        var elementID = $(this).attr("id")
+        if (elementVal.length > 0) {
+            //if ID is equal to phone number, make sure to format the phone number
+            userData[elementID] = elementVal
+            $(this).val("")
             }
         })
-        createNewUser(userData)
-        //console.log(userData)
-    }
-    function createNewUser(userData) {
-        $.post("/api/user", userData, function (results) {
-            console.log(results)
-            $("#confirmName").text(results.firstName + " " + results.lastName)
-            $("#confirmEmail").text(results.email)
-            if (results.address2 !== undefined) {
-                $("#confirmAddress").text(results.address + " " + results.address2 + " " + results.city + ", " + results.state + " " + results.zip)
-            } else {
-                $("#confirmAddress").text(results.address + " " + results.city + ", " + results.state + " " + results.zip)
-            }
-            if (results.phoneNumber !== undefined) {
-                $("#confirmNumber").text(results.phoneNumber)
-            }
-            if (results.gender !== undefined) {
-                $("#confirmGender").text(results.gender)
-            }
-            if (results.age !== undefined) {
-                $("#confirmAge").text(results.age)
-            }
-            if (results.languagePref !== undefined) {
-                $("#confirmLang").text(results.languagePref)
-            }
-            $("#survey").data("userID", results.uuid)
-            $("#userForm").slideUp("slow")
-            $("#confirmation").slideDown("slow")
-        })
-        $("#survey").click(function () {
-            var userID = $(this).data("userID")
-            window.location.href = "/survey/" + userID
-        })
-    }
+            createNewUser(userData)
+            console.log(userData)
+}
+
+function createNewUser(userData) {
+    $.post("/api/user", userData, function (results) {
+        console.log(results)
+        $("#confirmName").text(results.firstName + " " + results.lastName)
+        $("#confirmEmail").text(results.email)
+        if (results.address2 !== undefined) {
+            $("#confirmAddress").text(results.address + " " + results.address2 + " " + results.city + ", " + results.state + " " + results.zip)
+        } else {
+            $("#confirmAddress").text(results.address + " " + results.city + ", " + results.state + " " + results.zip)
+        }
+        if (results.phoneNumber !== undefined) {
+            $("#confirmNumber").text(results.phoneNumber)
+        }
+        if (results.gender !== undefined) {
+            $("#confirmGender").text(results.gender)
+        }
+        if (results.age !== undefined) {
+            $("#confirmAge").text(results.age)
+        }
+        if (results.languagePref !== undefined) {
+            $("#confirmLang").text(results.languagePref)
+        }
+        $("#survey").data("userID", results.userID)
+        $("#userForm").slideUp("slow")
+        $("#confirmation").slideDown("slow")
+    })
+    
+    $("#survey").click(function () {
+        var userID = $(this).data("userID")
+        window.location.href = "/survey/" + userID
+    })
+}
 </script>

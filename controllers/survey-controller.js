@@ -44,5 +44,6 @@ module.exports = {
     },
     deleteAll: function(req, res){
         console.log(req.body)
-    }
+    },
+
 }

@@ -30,7 +30,7 @@ module.exports = {
   },
 
   findOne: function (req, res) {
-    // console.log("Inside user-controller",req.params.userID)
+    console.log("Inside user-controller",req.params.userID)
     db.User
       .findOne({ where: { userID: req.params.userID } })
       .then(function (dbUser) {

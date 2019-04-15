@@ -6,10 +6,14 @@ router.route("/")
     .get(userController.find)
     .put(userController.update)
     .post(userController.create)
-    .delete(userController.delete);
+    .delete(userController.delete)
+
+    //.post(userController.findOne);
 
 //routes that match with "/api/user/all"
 router.route("/all")
+
+    //.post(userController.findOne)
     .get(userController.findAll)
     .delete(userController.deleteAll);
 
