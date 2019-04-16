@@ -26,22 +26,23 @@ module.exports = {
         console.log(req.body)
     },
     getAll: function(){
-        // db.Survey
-        // .findAll()
-        // .then(function(allSurvey){
-        //     return allSurvey
-        // })
+        db.Survey
+        .findAll()
+        .then(function(allSurvey){
+            return allSurvey
+        })
         var dbSurvey = {randomKey:"random value"}
         return dbSurvey
     },
+    
     findAll: function(req, res){
         db.Survey
         .findAll()
         .then(function(allSurvey){
             res.json(allSurvey)
-        })
-        
+        })   
     },
+    
     deleteAll: function(req, res){
         console.log(req.body)
     },

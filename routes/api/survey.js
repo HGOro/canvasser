@@ -13,7 +13,8 @@ router.route("/")
 //routes that match with "/api/survey/all"
 router.route("/all")
     .get(surveyController.findAll)
-    .delete(surveyController.deleteAll);
+    .delete(surveyController.deleteAll)
+    .get(surveyController.create);
 
 
 module.exports = router

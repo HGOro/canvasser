@@ -32,14 +32,11 @@
                 <div class="col-12 bg-danger" id="redStripe"></div>
             </div>
         </div>
-        <p class="lead col-12 bg-light" id="whiteStripe">Fill out a user profile here, then sumbit and fill out their
-            survey!</p>
+        <p class="lead col-12 bg-light" id="whiteStripe">Fill out a New Voter profile here, upon sumbit, their survey will appear.</p>
         <div class="col-12 bg-danger" id="redStripe"></div>
         <div class="col-12 bg-light" id="whiteStripe"></div>
         <div class="col-12 bg-danger" id="redStripe"></div>
-        <p class="col-12 bg-light" id="whiteStripe">You can graph responses by different demographics once you have
-            enough
-            data.</p>
+        <p class="col-12 bg-light" id="whiteStripe">Responses will be graphed by demographic once New Voter data is submitted.</p>
         <div class="col-12 bg-danger" id="redStripe"></div>
     </div>
 
@@ -92,7 +89,7 @@
 
             <div class="form-group">
                 <label for="phoneNumber">Phone Number</label>
-                <input type="tel" id="phoneNumber" class="form-control" name="phone"
+                <input type="tel" id="phoneNumber" class="form-control" placeholder= "must include dashes" name="phone"
                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="555-555-5555">
             </div>
 
@@ -151,6 +148,10 @@
         if (formIsValid) {
             populateUserData()
             console.log(true)
+        }
+
+        else {
+            alert("Please check that all fields are correctly filled out");
         }
         $("#survey").data("userID", results.userID)
         $("#userForm").slideUp("slow")
