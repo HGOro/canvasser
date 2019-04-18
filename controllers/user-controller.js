@@ -30,12 +30,17 @@ module.exports = {
   },
 
   findOne: function (req, res) {
-    console.log("Inside user-controller",req.params.userID)
+    // console.log("Inside user-controller",req.params.userID)
     db.User
       .findOne({ where: { userID: req.params.userID } })
       .then(function (dbUser) {
-        // console.log(dbUser)
-        res.render("survey", dbUser.dataValues)
+        const userInfo = {
+          userId:dbUser.dataValues.userID,
+          firstName: dbUser.dataValues.firstName, 
+          lastName: dbUser.dataValues.lastName
+        }
+
+        res.render("survey", userInfo)
       })
       .catch(function (err) {
         console.log(err)

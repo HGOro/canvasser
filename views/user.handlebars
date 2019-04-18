@@ -146,6 +146,7 @@
         var formIsValid = $("#userForm")[0].checkValidity()
 
         if (formIsValid) {
+            debugger
             populateUserData()
             console.log(true)
         }
@@ -153,8 +154,8 @@
         else {
             alert("Please check that all fields are correctly filled out");
         }
-        $("#survey").data("userID", results.userID)
-        $("#userForm").slideUp("slow")
+       
+       $("#userForm").slideUp("slow")
         $("#confirmation").slideDown("slow")
     })
     
@@ -164,6 +165,7 @@
     })
     
 function populateUserData() {
+    debugger
     var userData = {}
     $("input").each(function () {
         //console.log(element.val())
@@ -181,8 +183,9 @@ function populateUserData() {
 }
 
 function createNewUser(userData) {
+    debugger
     $.post("/api/user", userData, function (results) {
-        console.log(results)
+        console.log({results:results, userID:results.userID})
         $("#confirmName").text(results.firstName + " " + results.lastName)
         $("#confirmEmail").text(results.email)
         if (results.address2 !== undefined) {
@@ -205,6 +208,7 @@ function createNewUser(userData) {
         $("#survey").data("userID", results.userID)
         $("#userForm").slideUp("slow")
         $("#confirmation").slideDown("slow")
+        $("#survey").data("userID", results.userID)
     })
     
     $("#survey").click(function () {

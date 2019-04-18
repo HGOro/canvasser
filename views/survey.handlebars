@@ -4,19 +4,19 @@ Survey Form
   integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <br />
-{{uuid}}
+{{userID}}
 <br />
 {{firstName}} {{lastName}}
 
 
 <div class="clipBoard">
 
-   <div class="header1">
-        <a href="/index" class="headerLink headPad marg1">Home</a>
-        <a href="/user" class="headerLink headPad">User</a>
-        <img src="./canvasser-large.png" alt="logo" class="headerLogo headPad">
-        <a href="/search" class="headerLink headPad marg2">Map</a>
-    </div>
+  <div class="header1">
+    <a href="/index" class="headerLink headPad marg1">Home</a>
+    <a href="/user" class="headerLink headPad">User</a>
+    <img src="./canvasser-large.png" alt="logo" class="headerLogo headPad">
+    <a href="/search" class="headerLink headPad marg2">Map</a>
+  </div>
 
   <div class="d-flex justify-content-center fa-10x">
     <i class="fas fa-republican eleph" id="scales"></i>
@@ -28,7 +28,7 @@ Survey Form
     <form id="surveyForm">
       <div class="form-group">
         <label for="exampleFormControlSelect1" class="text-primary">Party Affiliation</label>
-        <select class="form-control border border-danger" id="partyAff">
+        <select class="form-control border border-danger" id="party">
           <option>Democrat</option>
           <option>Republican</option>
           <option>Independent</option>
@@ -39,7 +39,7 @@ Survey Form
 
       <div class="form-group">
         <label for="exampleFormControlSelect2" class="text-primary">Democratic Nominee</label>
-        <select class="form-control border border-danger" id="demChoice">
+        <select class="form-control border border-danger" id="demNominee">
           <option>Bernie Sanders</option>
           <option>Kamala Harris</option>
           <option>Other</option>
@@ -49,7 +49,7 @@ Survey Form
       </div>
       <div class="form-group">
         <label for="exampleFormControlSelect3" class="text-primary">Proposition 1</label>
-        <select class="form-control border border-danger" id="propChoice">
+        <select class="form-control border border-danger" id="prop">
           <option>Yes</option>
           <option>No</option>
           <option>Undecided</option>
@@ -81,40 +81,40 @@ Survey Form
       alert("Please complete required fields")
       return
     }
-    location.href = "/";
+
   });
 
+  function populateSurveyData() {
+    var surveyData = {}
 
-function populateSurveyData() {
-  var surveyData = {}
+    var url = window.location.href;
+    url = url.split("/");
+    var userID = url[url.length - 1];
+    surveyData.userID = userID;
 
-  var url = window.location.href;
-  url = url.split("/");
-  var userID = url[url.length -1];
-  surveyData.user = userID;
+    $("select").each(function () {
+      var elementVal = $(this).val();
+      var elementID = $(this).attr("id");
 
-  $("select").each(function(){
-    var elementVal = $(this).val();
-    var elementID = $(this).attr("id");
-  
       if (elementVal.length > 0 && elementVal !== undefined) {
         surveyData[elementID] = elementVal;
         $(this).val("");
       }
-
+    });
       if ($("#notes").val().trim().length > 0) {
         surveyData.notes = $("#notes").val().trim();
       }
-
-      console.log(surveyData);
+      
       createNewSurvey(surveyData);
-  });
-  
-}
-  function createNewSurvey(surveyData) {
 
-    $.post("/api/survey", surveyData, function (results) {
+  }
+  function createNewSurvey(surveyData) {
+    $.post("/api/survey", surveyData, function (err, results) {
+      if (err) {
+        console.log(err)
+      }
       console.log(results);
+      location.href = "/";
     });
   }
 

@@ -15,7 +15,7 @@ module.exports = {
         console.log(req.body)
     },
     create: function(req, res){
-        console.log(req.body)
+        console.log({fromSurvey:req.body})
         db.Survey
         .create(req.body)        
         .then(function(dbSurvey){
